@@ -6,7 +6,7 @@ import { Promotion } from '../../shared/promotion';
 import { PromotionProvider } from '../../providers/promotion/promotion';
 import { Leader } from '../../shared/leader';
 import { LeaderProvider } from '../../providers/leader/leader';
-import { baseURL } from '../../shared/baseurl';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
     , private dishservice: DishProvider,
     private promotionservice: PromotionProvider,
     private leaderservice: LeaderProvider,
-    @Inject('BaseURL') private baseURL) {
+    @Inject('BaseURL') private BaseURL) {
 
   }
   ngOnInit(){
