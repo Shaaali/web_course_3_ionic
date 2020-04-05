@@ -8,6 +8,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { MenuPage } from '../pages/menu/menu';
 import {DishdetailPage} from '../pages/dishdetail/dishdetail';
+import {ReservationPage} from '../pages/reservation/reservation';
 import {FavoritesPage} from '../pages/favorites/favorites'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +28,8 @@ import {HttpClientModule} from '@angular/common/http'
     MenuPage,
     ContactPage,
     DishdetailPage,
-    FavoritesPage
+    FavoritesPage,
+    ReservationPage
  ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import {HttpClientModule} from '@angular/common/http'
     MenuPage,
     ContactPage,
     DishdetailPage,
-    FavoritesPage
+    FavoritesPage,
+    ReservationPage
   ],
   providers: [
     StatusBar,
