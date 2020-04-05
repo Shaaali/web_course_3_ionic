@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
       errmess => this.dishErrMess=<any>errmess );
     this.promotionservice.getFeaturedPromotion()
     .subscribe(promotion => this.promotion = promotion,
-      errmess => this.dishErrMess=<any>errmess );
+      errmess => this.promoErrMess=<any>errmess );
     this.leaderservice.getFeaturedLeader()
     .subscribe(leader => this.leader = leader,
       errmess => this.leaderErrMess=<any>errmess );

@@ -17,7 +17,8 @@ import { PromotionProvider } from '../providers/promotion/promotion';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 
 import {baseURL} from '../shared/baseurl';
-
+import { FavouriteProvider } from '../providers/favourite/favourite';
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +32,7 @@ import {baseURL} from '../shared/baseurl';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +51,8 @@ import {baseURL} from '../shared/baseurl';
     LeaderProvider,
     PromotionProvider,
     ProcessHttpmsgProvider,
-    {provide: 'BaseURL', useValue:baseURL}
+    {provide: 'BaseURL', useValue:baseURL},
+    FavouriteProvider
   ]
 })
 export class AppModule {}
