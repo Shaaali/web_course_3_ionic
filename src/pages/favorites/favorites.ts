@@ -1,5 +1,5 @@
 import { Component , OnInit,Inject} from '@angular/core';
-import { IonicPage, NavController, NavParams ,ItemSliding} from 'ionic-angular';
+import {ToastController, AlertController, IonicPage, NavController, NavParams ,ItemSliding, LoadingController} from 'ionic-angular';
 import {FavouriteProvider} from '../../providers/favourite/favourite';
 import {Dish} from '../../shared/dish';
 
@@ -21,6 +21,9 @@ export class FavoritesPage implements OnInit{
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private favoriteservice : FavouriteProvider,
+    private toastCtrl : ToastController,  
+    private loadingCtrl :LoadingController,
+    private alertCtrl: AlertController,
     @Inject('BaseURL') private BaseURL) {
   }
 ngOnInit(){
@@ -33,9 +36,39 @@ ngOnInit(){
   }
   deleteFavorite(item:ItemSliding, id : number){
     console.log('delete',id);
-  this.favoriteservice.deleteFavorite(id)
-  .subscribe(favorites => this.favorites = favorites,
-    errmess => this.errMess=errmess);
+
+    let alert = this.alertCtrl.create({
+      title : 'Confirm Title',
+      message: 'Do you want to delete Favorite '+ id,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('delete cancelled');
+          } 
+        },
+        {
+            text: 'Delete',
+            handler: () => {
+              let loading= this.loadingCtrl.create({
+                content: 'Deleting . . .'
+              });
+              let toast = this.toastCtrl.create({
+                message: 'Dish' + id + ' deleted succesfully',
+                duration: 3000
+              });
+              loading.present();
+            this.favoriteservice.deleteFavorite(id)
+            .subscribe(favorites => { this.favorites = favorites; loading.dismiss(); toast.present();},
+              errmess => {this.errMess=errmess;loading.dismiss();});          
+            }
+        }
+      ]
+    });
+    
+    alert.present();
+
   item.close();
   }
 
