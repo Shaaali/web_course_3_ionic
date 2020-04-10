@@ -9,6 +9,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { MenuPage } from '../pages/menu/menu';
 import {FavoritesPage} from '../pages/favorites/favorites';
 import {ReservationPage} from '../pages/reservation/reservation';
+import {LoginPage} from '../pages/login/login';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -51,6 +53,10 @@ export class MyApp {
   }
   openReserve(){
     let modal = this.modalCtrl.create(ReservationPage);
+    modal.present();
+  }
+  openLogin(){
+    let modal = this.modalCtrl.create(LoginPage);
     modal.present();
   }
 }
