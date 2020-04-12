@@ -6,19 +6,23 @@ import {Dish} from '../../shared/dish';
 import {Observable} from 'rxjs/observable';
 import {DishProvider} from '../dish/dish';
 import {Storage} from '@ionic/storage';
+import {LocalNotifications} from '@ionic-native/local-notifications';
 /*
   Generated class for the FavouriteProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
 @Injectable()
 export class FavouriteProvider {
   favorites: Array<any>;
 
   constructor(public http: Http,
     private dishservice: DishProvider,
-    private storage: Storage) {
+    private storage: Storage,
+    private localNotifications: LocalNotifications
+    ) {
     console.log('Hello FavoriteProvider Provider');
     storage.get('favorites').then((favorites) => {
       if(favorites){
@@ -26,7 +30,7 @@ export class FavouriteProvider {
       }
       else
         {console.log('favorites not set');
-        this.favorites = [];
+    
       }
       });
      
@@ -38,7 +42,11 @@ storeFavorites(){
   if (!this.isFavorite(id))
     this.favorites.push(id);
    this.storeFavorites();
-  return true;
+   this.localNotifications.schedule({
+     id: id,
+     text: 'Dish ' + id +" added as a favorite succesfully!"
+   });
+  return true;   
   }
   isFavorite(id:number): boolean{
     return this.favorites.some(el => el===id);
@@ -47,6 +55,7 @@ storeFavorites(){
     return this.dishservice.getDishes()
     .map(dishes => dishes.filter(dish => this.favorites.some(el => el===dish.id)));
   }
+
   deleteFavorite(id:number):Observable<Dish[]>{
     let index = this.favorites.indexOf(id);
     if (index>=0){
