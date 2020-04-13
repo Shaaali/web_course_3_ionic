@@ -18,16 +18,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {LocalNotifications} from '@ionic-native/local-notifications';
 import {EmailComposer} from '@ionic-native/email-composer';
 import {SocialSharing} from '@ionic-native/social-sharing';
-
+import {Camera} from '@ionic-native/camera';
 import { DishProvider } from '../providers/dish/dish';
 import { LeaderProvider } from '../providers/leader/leader';
 import { PromotionProvider } from '../providers/promotion/promotion';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 import {LoginPage} from '../pages/login/login';
-
+import {RegisterPage} from '../pages/register/register';
 import {baseURL} from '../shared/baseurl';
 import { FavouriteProvider } from '../providers/favourite/favourite';
 import {HttpClientModule} from '@angular/common/http'
+import { registerLocaleData } from '@angular/common';
 @NgModule({
   declarations: [
     MyApp,
@@ -39,7 +40,8 @@ import {HttpClientModule} from '@angular/common/http'
     FavoritesPage,
     ReservationPage,
     CommentPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
  ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import {HttpClientModule} from '@angular/common/http'
     FavoritesPage,
     ReservationPage,
     CommentPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
@@ -73,7 +76,8 @@ import {HttpClientModule} from '@angular/common/http'
     FavouriteProvider,
     LocalNotifications,
     EmailComposer,
-    SocialSharing
+    SocialSharing,
+    Camera
   ]
 })
 export class AppModule {}
