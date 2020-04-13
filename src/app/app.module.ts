@@ -11,6 +11,7 @@ import {DishdetailPage} from '../pages/dishdetail/dishdetail';
 import {ReservationPage} from '../pages/reservation/reservation';
 import {CommentPage} from '../pages/comment/comment';
 import {IonicStorageModule} from '@ionic/storage';
+import {Network}  from '@ionic-native/network';
 
 import {FavoritesPage} from '../pages/favorites/favorites'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,6 +30,7 @@ import {baseURL} from '../shared/baseurl';
 import { FavouriteProvider } from '../providers/favourite/favourite';
 import {HttpClientModule} from '@angular/common/http'
 import { registerLocaleData } from '@angular/common';
+import { from } from 'rxjs/observable/from';
 @NgModule({
   declarations: [
     MyApp,
@@ -77,7 +79,8 @@ import { registerLocaleData } from '@angular/common';
     LocalNotifications,
     EmailComposer,
     SocialSharing,
-    Camera
+    Camera,
+    Network
   ]
 })
 export class AppModule {}
