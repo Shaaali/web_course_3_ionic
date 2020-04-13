@@ -57,6 +57,23 @@ export class RegisterPage {
     },
     (err)=>{ console.log('Error obtaining picture')})
   }
+  getFromGallery(){
+    const options: CameraOptions= {
+      
+      targetHeight: 100,
+      targetWidth: 100,
+      allowEdit: true,
+      sourceType:this.camera.PictureSourceType.PHOTOLIBRARY,
+      mediaType: this.camera.MediaType.PICTURE,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.PNG,
+    };
+    this.camera.getPicture(options)
+    .then((imageData)=>{
+        this.image = imageData
+    },
+    (err)=>{ console.log('Error obtaining picture')})
+  }
   onSubmit(){
     console.log(this.registerForm.value);
     this.dismiss();

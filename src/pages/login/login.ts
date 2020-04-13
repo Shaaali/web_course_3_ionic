@@ -4,7 +4,6 @@ import { Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {Storage} from '@ionic/storage';
 import {User} from '../../shared/user';
 import {RegisterPage} from '../register/register';
-import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 /**
  * Generated class for the LoginPage page.

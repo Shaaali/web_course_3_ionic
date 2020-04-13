@@ -12,6 +12,7 @@ import {ReservationPage} from '../pages/reservation/reservation';
 import {CommentPage} from '../pages/comment/comment';
 import {IonicStorageModule} from '@ionic/storage';
 import {Network}  from '@ionic-native/network';
+import {CallNumber} from '@ionic-native/call-number';
 
 import {FavoritesPage} from '../pages/favorites/favorites'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -80,7 +81,8 @@ import { from } from 'rxjs/observable/from';
     EmailComposer,
     SocialSharing,
     Camera,
-    Network
+    Network,
+    CallNumber
   ]
 })
 export class AppModule {}
